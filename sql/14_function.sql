@@ -2,7 +2,6 @@
  * Use a JOIN to count the number films in the specified category.
  * Use table category, film_category, and film.
  */
-
 CREATE OR REPLACE FUNCTION list_category(TEXT) RETURNS TABLE(title TEXT) AS
 $$
 SELECT title
@@ -10,7 +9,7 @@ FROM film
 JOIN film_category USING (film_id)
 JOIN category USING (category_id)
 WHERE name = $1
-ORDER BY film_id;
+ORDER BY title;
 $$
 LANGUAGE SQL
 IMMUTABLE
